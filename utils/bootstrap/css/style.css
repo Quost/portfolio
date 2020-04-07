@@ -1,0 +1,99 @@
+/* Justifica todos os textos das linhas das tabelas */
+
+td {
+    text-align: justify;
+}
+
+
+/* Define em 90% o tamanho da fonte, e cor azul para links e códigos*/
+
+code,
+a,
+h3 {
+    color: #0a1441
+}
+
+
+/* Define as cores da tabela */
+
+.thead-roxo th {
+    color: #fff;
+    background-color: #0a1441;
+    border-color: #fff;
+}
+
+
+/* Cor das bordas da tabela */
+
+.table {
+    border-color: #0a1441
+}
+
+
+/* Inicializa com 0 as margens e preenchimentos das divs do rodapé */
+
+footer div {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Abaixo, série de configurações para tornar a primeira página com imagem em tela cheia */
+
+
+/* Define Largura em 100% */
+
+html,
+body,
+header,
+.view {
+    height: 100%;
+}
+
+
+/* Responsividade (consultei, não sei mecher com isso ainda) */
+
+@media (max-width: 740px) {
+    html,
+    body,
+    header,
+    .view {
+        height: 100vh;
+    }
+}
+
+.top-nav-collapse {
+    background-color: #0a1441 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+}
+
+@media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #0a1441 !important;
+    }
+}
+
+
+/* Espaçamento entre letras em 8px; para todo h1*/
+
+h1 {
+    letter-spacing: 8px;
+}
+
+
+/* Espaçamento entre letras em 3px; para todo h5 */
+
+h5 {
+    letter-spacing: 3px;
+}
+
+
+/* Altura borda e altura de elementos cuja classe é "hr-light" */
+
+.hr-light {
+    border-top: 3px solid #fff;
+    width: 80px;
+}
