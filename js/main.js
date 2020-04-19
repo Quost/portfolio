@@ -1,44 +1,43 @@
-jQuery(document).ready(function () {
+jQuery(document).ready(function() {
 
-    jQuery(".section-title-holder").stick_in_parent({offset_top: 64}).on("sticky_kit:stick", function (e) {
+    jQuery(".section-title-holder").stick_in_parent({ offset_top: 64 }).on("sticky_kit:stick", function(e) {
         jQuery('.menu-wrapper, .menu-wrapper .sub-menu').css('backgroundColor', jQuery(this).css("backgroundColor"));
         jQuery('.menu-wrapper a, .mob-menu').css('color', jQuery(this).find('.section-num span').css("color"));
     });
 
-    jQuery(".section-title-holder").stick_in_parent({offset_top: 64}).on("sticky_kit:unbottom", function (e) {
+    jQuery(".section-title-holder").stick_in_parent({ offset_top: 64 }).on("sticky_kit:unbottom", function(e) {
         jQuery('.menu-wrapper, .menu-wrapper .sub-menu').css('backgroundColor', jQuery(this).css("backgroundColor"));
         jQuery('.menu-wrapper a, .mob-menu').css('color', jQuery(this).find('.section-num span').css("color"));
     });
 
 
     //Placeholder show/hide
-    jQuery('input, textarea').focus(function () {
+    jQuery('input, textarea').focus(function() {
         jQuery(this).data('placeholder', jQuery(this).attr('placeholder'));
         jQuery(this).attr('placeholder', '');
     });
-    jQuery('input, textarea').blur(function () {
+    jQuery('input, textarea').blur(function() {
         jQuery(this).attr('placeholder', jQuery(this).data('placeholder'));
     });
 
 
     //Portfolio
-    var grid = jQuery('.grid').imagesLoaded(function () {
+    var grid = jQuery('.grid').imagesLoaded(function() {
         grid.isotope({
             itemSelector: '.grid-item',
             masonry: {
                 columnWidth: '.grid-sizer'
             }
-        }
-        );
+        });
         //Fix for portfolio item text
-        jQuery('.portfolio-text-holder').each(function () {
+        jQuery('.portfolio-text-holder').each(function() {
             jQuery(this).find('.portfolio-text-wrapper').css('margin-top', (jQuery(this).height() - jQuery(this).find('.portfolio-text-wrapper').height()) / 2 - 70);
         });
 
         //Fix for portfolio hover text fade in/out
-        jQuery('.grid-item a').hover(function () {
+        jQuery('.grid-item a').hover(function() {
             jQuery(this).find('.portfolio-text-holder').fadeIn('fast');
-        }, function () {
+        }, function() {
             jQuery(this).find('.portfolio-text-holder').fadeOut('fast');
         });
     });
@@ -46,29 +45,26 @@ jQuery(document).ready(function () {
 });
 
 
-jQuery(window).load(function () {
+jQuery(window).load(function() {
 
     //Show-Hide Mobile Menu
     jQuery('.mob-menu').on("click", showHideMobMenu);
-    if (jQuery("body").width() <= 925)
-    {
+    if (jQuery("body").width() <= 925) {
         jQuery('.main-menu a').on("click", hideMobMenuItemClick);
     }
 
     //Set each image slider
-    jQuery(".image-slider").each(function () {
+    jQuery(".image-slider").each(function() {
         var id = jQuery(this).attr('id');
         var auto_value = window[id + '_auto'];
-        if (auto_value == 'false')
-        {
+        if (auto_value == 'false') {
             auto_value = false;
         } else {
             auto_value = true;
         }
 
         var hover_pause = window[id + '_hover'];
-        if (hover_pause == 'true')
-        {
+        if (hover_pause == 'true') {
             hover_pause = 'resume';
         } else {
             hover_pause = false;
@@ -97,7 +93,7 @@ jQuery(window).load(function () {
             }
         });
     });
-    jQuery('.image-slider-wrapper').each(function () {
+    jQuery('.image-slider-wrapper').each(function() {
         var slider_width = jQuery(this).width();
         var pagination_width = jQuery(this).find('.carousel_pagination').width();
         jQuery(this).find('.carousel_pagination').css("margin-left", (slider_width - pagination_width) / 2);
@@ -105,19 +101,17 @@ jQuery(window).load(function () {
 
 
     //Set each testimonial slider
-    jQuery(".testimonial").each(function () {
+    jQuery(".testimonial").each(function() {
         var id = jQuery(this).attr('id');
         var auto_value = window[id + '_auto'];
-        if (auto_value == 'false')
-        {
+        if (auto_value == 'false') {
             auto_value = false;
         } else {
             auto_value = true;
         }
 
         var hover_pause = window[id + '_hover'];
-        if (hover_pause == 'true')
-        {
+        if (hover_pause == 'true') {
             hover_pause = 'resume';
         } else {
             hover_pause = false;
@@ -146,27 +140,25 @@ jQuery(window).load(function () {
         });
     });
 
-    jQuery('.carousel_pagination').each(function () {
+    jQuery('.carousel_pagination').each(function() {
         var pagination_width = jQuery(this).width();
         var windw_width = jQuery('.testimonial-slider-holder').width();
         jQuery(this).css("margin-left", (windw_width - pagination_width) / 2);
     });
 
     //Set each FW image slider
-    jQuery(".fw-image-slider").each(function () {
+    jQuery(".fw-image-slider").each(function() {
         var id = jQuery(this).attr('id');
 
         var auto_value = window[id + '_auto'];
-        if (auto_value == 'false')
-        {
+        if (auto_value == 'false') {
             auto_value = false;
         } else {
             auto_value = true;
         }
 
         var hover_pause = window[id + '_hover'];
-        if (hover_pause == 'true')
-        {
+        if (hover_pause == 'true') {
             hover_pause = 'resume';
         } else {
             hover_pause = false;
@@ -207,26 +199,40 @@ jQuery(window).load(function () {
 
 
     //PrettyPhoto initial
-    jQuery('a[data-rel]').each(function () {
+    jQuery('a[data-rel]').each(function() {
         jQuery(this).attr('rel', jQuery(this).data('rel'));
     });
     jQuery("a[rel^='prettyPhoto']").prettyPhoto({
-        animation_speed: 'fast', /* fast/slow/normal */
-        slideshow: false, /* false OR interval time in ms */
-        autoplay_slideshow: false, /* true/false */
-        opacity: 0.80, /* Value between 0 and 1 */
-        show_title: true, /* true/false */
-        allow_resize: true, /* Resize the photos bigger than viewport. true/false */
+        animation_speed: 'fast',
+        /* fast/slow/normal */
+        slideshow: false,
+        /* false OR interval time in ms */
+        autoplay_slideshow: false,
+        /* true/false */
+        opacity: 0.80,
+        /* Value between 0 and 1 */
+        show_title: true,
+        /* true/false */
+        allow_resize: true,
+        /* Resize the photos bigger than viewport. true/false */
         default_width: 500,
         default_height: 344,
-        counter_separator_label: '/', /* The separator for the gallery counter 1 "of" 2 */
-        theme: 'pp_default', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
-        hideflash: false, /* Hides all the flash object on a page, set to TRUE if flash appears over prettyPhoto */
-        wmode: 'opaque', /* Set the flash wmode attribute */
-        autoplay: true, /* Automatically start videos: True/False */
-        modal: false, /* If set to true, only the close button will close the window */
-        overlay_gallery: false, /* If set to true, a gallery will overlay the fullscreen image on mouse over */
-        keyboard_shortcuts: true, /* Set to false if you open forms inside prettyPhoto */
+        counter_separator_label: '/',
+        /* The separator for the gallery counter 1 "of" 2 */
+        theme: 'pp_default',
+        /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+        hideflash: false,
+        /* Hides all the flash object on a page, set to TRUE if flash appears over prettyPhoto */
+        wmode: 'opaque',
+        /* Set the flash wmode attribute */
+        autoplay: true,
+        /* Automatically start videos: True/False */
+        modal: false,
+        /* If set to true, only the close button will close the window */
+        overlay_gallery: false,
+        /* If set to true, a gallery will overlay the fullscreen image on mouse over */
+        keyboard_shortcuts: true,
+        /* Set to false if you open forms inside prettyPhoto */
         deeplinking: false,
         social_tools: false,
         iframe_markup: '<iframe src ="{path}" width="{width}" height="{height}" frameborder="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
@@ -235,11 +241,10 @@ jQuery(window).load(function () {
     var $videoDefaultWidth = Math.ceil(jQuery('body').width() * 0.7);
     var $videoDefaultHeight = Math.ceil($videoDefaultWidth * 0.5625);
 
-    jQuery("a[rel^='prettyPhoto']").each(function () {
+    jQuery("a[rel^='prettyPhoto']").each(function() {
 
         var str = jQuery(this).attr('href');
-        if ((str.indexOf("youtube") >= 0 || (str.indexOf("vimeo")) >= 0))
-        {
+        if ((str.indexOf("youtube") >= 0 || (str.indexOf("vimeo")) >= 0)) {
             jQuery(this).attr("href", str + "&width=" + $videoDefaultWidth + "&height=" + $videoDefaultHeight);
         }
     });
@@ -250,15 +255,15 @@ jQuery(window).load(function () {
         subMenusSubOffsetY: -8,
         markCurrentItem: true
     });
-    var $mainMenu = jQuery('.main-menu').on('click', 'span.sub-arrow', function (e) {
+    var $mainMenu = jQuery('.main-menu').on('click', 'span.sub-arrow', function(e) {
         var obj = $mainMenu.data('smartmenus');
         if (obj.isCollapsible()) {
             var $item = jQuery(this).parent(),
-                    $sub = $item.parent().dataSM('sub');
+                $sub = $item.parent().dataSM('sub');
             $sub.dataSM('arrowClicked', true);
         }
     }).bind({
-        'beforeshow.smapi': function (e, menu) {
+        'beforeshow.smapi': function(e, menu) {
             var obj = $mainMenu.data('smartmenus');
             if (obj.isCollapsible()) {
                 var $menu = jQuery(menu);
@@ -277,26 +282,24 @@ jQuery(window).load(function () {
 });
 
 
-jQuery(window).resize(function () {
+jQuery(window).resize(function() {
 
     //Show-Hide Mobile Menu        
-    if (jQuery("body").width() <= 925)
-    {
+    if (jQuery("body").width() <= 925) {
         jQuery('.main-menu a').on("click", hideMobMenuItemClick);
     }
 
     var $videoDefaultWidth = Math.ceil(jQuery('body').width() * 0.7);
     var $videoDefaultHeight = Math.ceil($videoDefaultWidth * 0.5625);
-    jQuery("a[rel^='prettyPhoto']").each(function () {
+    jQuery("a[rel^='prettyPhoto']").each(function() {
 
         var str = jQuery(this).attr('href');
         str = str.split('&width');
-        if ((str[0].indexOf("youtube") >= 0 || (str[0].indexOf("vimeo")) >= 0))
-        {
+        if ((str[0].indexOf("youtube") >= 0 || (str[0].indexOf("vimeo")) >= 0)) {
             jQuery(this).attr("href", str[0] + "&width=" + $videoDefaultWidth + "&height=" + $videoDefaultHeight);
         }
     });
-    jQuery('.image-slider-wrapper').each(function () {
+    jQuery('.image-slider-wrapper').each(function() {
         var slider_width = jQuery(this).width();
         var pagination_width = jQuery(this).find('.carousel_pagination').width();
         jQuery(this).find('.carousel_pagination').css("margin-left", (slider_width - pagination_width) / 2);
@@ -304,7 +307,7 @@ jQuery(window).resize(function () {
 
 
     //Fix for portfolio item text
-    jQuery('.portfolio-text-holder').each(function () {
+    jQuery('.portfolio-text-holder').each(function() {
         jQuery(this).find('.portfolio-text-wrapper').css('margin-top', (jQuery(this).height() - jQuery(this).find('.portfolio-text-wrapper').height()) / 2 - 70);
     });
 });
@@ -313,13 +316,12 @@ jQuery(window).resize(function () {
 //------------------------------------------------------------------------
 
 
-var showHideMobMenu = function (e) {
+var showHideMobMenu = function(e) {
     jQuery('.main-menu').slideToggle();
 };
 
-var hideMobMenuItemClick = function (e) {
-    if (jQuery('.mob-menu').is(':visible'))
-    {
+var hideMobMenuItemClick = function(e) {
+    if (jQuery('.mob-menu').is(':visible')) {
         jQuery('.main-menu').slideUp();
     }
 };
@@ -333,63 +335,63 @@ function isValidEmailAddress(emailAddress) {
     return pattern.test(emailAddress);
 }
 
-var SendMail = function () {
+// var SendMail = function () {
 
-    var emailVal = jQuery('#contact-email').val();
+//     var emailVal = jQuery('#contact-email').val();
 
-    if (isValidEmailAddress(emailVal)) {
-        var params = {
-            'action': 'SendMessage',
-            'name': jQuery('#name').val(),
-            'email': jQuery('#contact-email').val(),
-            'subject': jQuery('#subject').val(),
-            'message': jQuery('#message').val()
-        };
-        jQuery.ajax({
-            type: "POST",
-            url: "php/sendMail.php",
-            data: params,
-            success: function (response) {
-                if (response) {
-                    var responseObj = jQuery.parseJSON(response);
-                    if (responseObj.ResponseData)
-                    {
-                        alert(responseObj.ResponseData);
-                    }
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                //xhr.status : 404, 303, 501...
-                var error = null;
-                switch (xhr.status)
-                {
-                    case "301":
-                        error = "Redirection Error!";
-                        break;
-                    case "307":
-                        error = "Error, temporary server redirection!";
-                        break;
-                    case "400":
-                        error = "Bad request!";
-                        break;
-                    case "404":
-                        error = "Page not found!";
-                        break;
-                    case "500":
-                        error = "Server is currently unavailable!";
-                        break;
-                    default:
-                        error = "Unespected error, please try again later.";
-                }
-                if (error) {
-                    alert(error);
-                }
-            }
-        });
-    } else
-    {
-        alert('Your email is not in valid format');
-    }
+//     if (isValidEmailAddress(emailVal)) {
+//         var params = {
+//             'action': 'SendMessage',
+//             'name': jQuery('#name').val(),
+//             'email': jQuery('#contact-email').val(),
+//             'subject': jQuery('#subject').val(),
+//             'message': jQuery('#message').val()
+//         };
+//         jQuery.ajax({
+//             type: "POST",
+//             url: "php/sendMail.php",
+//             data: params,
+//             success: function (response) {
+//                 if (response) {
+//                     var responseObj = jQuery.parseJSON(response);
+//                     if (responseObj.ResponseData)
+//                     {
+//                         alert(responseObj.ResponseData);
+//                     }
+//                 }
+//             },
+//             error: function (xhr, ajaxOptions, thrownError) {
+//                 //xhr.status : 404, 303, 501...
+//                 var error = null;
+//                 switch (xhr.status)
+//                 {
+//                     case "301":
+//                         error = "Redirection Error!";
+//                         break;
+//                     case "307":
+//                         error = "Error, temporary server redirection!";
+//                         break;
+//                     case "400":
+//                         error = "Bad request!";
+//                         break;
+//                     case "404":
+//                         error = "Page not found!";
+//                         break;
+//                     case "500":
+//                         error = "Server is currently unavailable!";
+//                         break;
+//                     default:
+//                         error = "Unespected error, please try again later.";
+//                 }
+//                 if (error) {
+//                     alert(error);
+//                 }
+//             }
+//         });
+//     } else
+//     {
+//         alert('Your email is not in valid format');
+//     }
 
 
-};
+// };
